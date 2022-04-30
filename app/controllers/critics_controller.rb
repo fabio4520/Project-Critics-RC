@@ -1,48 +1,42 @@
 class CriticsController < ApplicationController
   before_action :set_critic, only: %i[ show edit update destroy ]
 
-  # GET /critics
-  def index
-    @critics = Critic.all
-  end
-
-  # GET /critics/1
-  def show
-  end
-
-  # GET /critics/new
-  def new
-    @critic = Critic.new
-  end
-
-  # GET /critics/1/edit
-  def edit
-  end
-
-  # POST /critics
+  # POST /games/:game_id/critics
+  # POST /companies/:company_id/critics
   def create
-    @critic = Critic.new(critic_params)
+    if params[:game_id]
+       @game = Game.find(params[:game_id])
+       comment = @game.critics.new(critic_params)
+    elsif params[:company_id]
+      @company = Company.find(params[:company_id])
+      comment = @company.critics.new(critic_params)
+    end
 
-    if @critic.save
-      redirect_to @critic, notice: "Critic was successfully created."
+    if comment.save
+      if params[:game_id]
+        redirect_to game_path(@game), notice: "Critic was successfully created."
+      elsif params[:company_id]
+        redirect_to company_path(@company), notice: "Critic was successfully created."
+      end
     else
-      render :new, status: :unprocessable_entity
+      redirect_to game_path(@game)  # PENDING render :new, status: :unprocessable_entity
     end
   end
 
-  # PATCH/PUT /critics/1
-  def update
-    if @critic.update(critic_params)
-      redirect_to @critic, notice: "Critic was successfully updated."
-    else
-      render :edit, status: :unprocessable_entity
-    end
-  end
-
-  # DELETE /critics/1
+  # DELETE /games/:game_id/critics/:id
+  # DELETE /companies/:company_id/critics/:id
   def destroy
-    @critic.destroy
-    redirect_to critics_url, notice: "Critic was successfully destroyed."
+    if params[:game_id]
+      @game = Game.find(params[:game_id])
+      comment = @game.critics.find(params[:id])
+      comment.delete
+      redirect_to game_path(@game), notice: "Critic was successfully destroyed."
+   elsif params[:company_id]
+     @company = Company.find(params[:company_id])
+     comment = @company.critics.find(params[:id])
+     comment.delete
+     redirect_to company_path(@company), notice: "Critic was successfully destroyed."
+   end
   end
 
   private
