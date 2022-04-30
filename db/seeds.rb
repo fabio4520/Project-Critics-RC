@@ -18,99 +18,120 @@ puts "Finish"
 ######################
 # Start seeding User
 puts "Start seeding User"
-user = User.create(
-  username: "test2" ,
-  email: "test2@mail.com",
-)
-puts "Finish seeding User"
-# Finish seeding User
-######################
+20.times do |n|
+  v_user = Faker::Internet.user('username', 'email')
+  user  = User.new( v_user )
+  if user.valid?
+    user.save
+  else
+    puts "Cannot create user #{v_user}"
+  end
+end
+puts "Finish seeding Users"
+
+# ######################
+# # Start seeding Companies
 puts "Start seeding Companies"
-# Start seeding Companies
-3.times do |n|
-  company = Company.create(
-    name: Faker::Company.name, 
-    description: Faker::Lorem.paragraph,
-    start_date: Faker::Date.between(from: '1900-01-01', to: Time.zone.now),
-    country: Faker::Address.country,
-  )
-  company.cover.attach(io: File.open("db/img/game #{n + 1}.png"), filename: "game #{n + 1}.png")
-  # company.critic.create(
-  #   title: Faker::Lorem.sentence,
-  #   body: Faker::Lorem.paragraph,
-  #   user: user
-  # )
+10.times do |n|
+  company = Company.new( name: Faker::Company.name,  description: Faker::Lorem.paragraph, start_date: Faker::Date.between(from: '1900-01-01', to: Time.zone.now), country: Faker::Address.country )
+  if company.valid?
+    company.save
+    company.cover.attach(io: File.open("db/img/company #{n + 1}.png"), filename: "company #{n + 1}.png")
+  else
+    puts "Cannot create company #{company}"
+  end
 end
 puts "Finish seeding Companies"
-# Finish seeding Companies
-######################
+#   # company.critic.create(
+#   #   title: Faker::Lorem.sentence,
+#   #   body: Faker::Lorem.paragraph,
+#   #   user: user
+#   # )
+
+# ######################
 puts "Start seeding Platform"
 # Start seeding Platform
 5.times do |n|
-  platform = Platform.create(
-    name: Faker::Game.platform,
-    category: (0..5).to_a.sample
-  )
+  platform = Platform.new( name: Faker::Game.platform, category: (0..5).to_a.sample )
+  if platform.valid?
+    platform.save
+  else
+    puts "Cannot create platform #{platform}"
+  end
 end
 puts "Finish seeding Platform"
 # Finish seeding Platform
-######################
+
+# ######################
 puts "Start seeding Genre"
 # Start seeding Genre
 # 5 --> randomly chosen number
 5.times do |n|
-  genre = Genre.create(
-    name: Faker::Game.genre
-  )
+  genre = Genre.new( name: Faker::Game.genre )
+  if genre.valid?
+    genre.save
+  else
+    puts "Cannot create genre #{company}"
+  end
 end
 puts "Finish seeding Genre"
 # Finish seeding Genre
-######################
+
+# ######################
 puts "Start seeding Games"
 # Start seeding Games
 # Ternary operator are placed because the last game will be an expansion of the first one.
-3.times do |n|
-  game = Game.create(
+30.times do |n|
+  category = rand(0..1)
+  game = Game.new(
     name: Faker::Game.title,
     summary: Faker::Lorem.paragraph,
     release_date: Faker::Date.between(from: '1990-01-01', to: Time.zone.now),
-    category: n == 2 ? 1 : 0,
+    category: category,
     rating: rand(1.0..100.0).round(1),
-    parent: n == 2 ? Game.first : nil
+    parent: category == 1 ? Game.all.sample : nil
   )
-  game.cover.attach(io: File.open("db/img/company #{n + 1}.png"), filename: "company #{n + 1}.png")
-  # game.critic.create(
-  #   title: Faker::Lorem.sentence,
-  #   body: Faker::Lorem.paragraph,
-  #   user: user
-  # )
+  if game.valid?
+    game.save
+    game_number = rand(1..3)
+    game.cover.attach(io: File.open("db/img/game #{game_number}.png"), filename: "game #{game_number}.png")
+    # Adding involved_companies relation
+    3.times do 
+      game.involved_companies.create(company: Company.all.sample, developer: [true, false].sample, publisher: [true, false].sample )
+    end
+  else
+    puts "Cannot create game #{game}"
+  end
 end
+#   game.cover.attach(io: File.open("db/img/company #{n + 1}.png"), filename: "company #{n + 1}.png")
+#   # game.critic.create(
+#   #   title: Faker::Lorem.sentence,
+#   #   body: Faker::Lorem.paragraph,
+#   #   user: user
+#   # )
+# end
 puts "Finish seeding Games"
 # Finish seeding Games
-######################
-puts "Start seeding InvolvedCompany"
-# Start seeding InvolvedCompany
-3.times do |n|
-  company = [Company.first, Company.second, Company.third][n]
-  game = [Game.first, Game.second, Game.third][n]
-  inv_comp = InvolvedCompany.create(
-    company: company,
-    game: game,
-    developer: [false, true].sample,
-    publisher: [false, true].sample,
-  )
-end
-puts "Finish seeding InvolvedCompany"
-# Finish seeding InvolvedCompany
-######################
+
+
+# ########################################### 
 puts "Start seeding Critic"
-# Start seeding Critic
-########################################### Error al tratar de vincular critics con games y company
-critic = Critic.create(
-  title: Faker::Lorem.sentence,
-  body: Faker::Lorem.paragraph,
-  user: user
-)
+# # Start seeding Critic
+60.times do 
+  user = User.all.sample
+  5.times do
+    user_critic = user.critics.new(
+      title: Faker::Hipster.sentence(word_count: 4), 
+      body: Faker::Hipster.paragraph_by_chars(characters: 200), 
+      criticable: rand(0..1) == 0 ? Company.all.sample : Game.all.sample)
+    
+    if user_critic.valid?
+      user_critic.save
+    else
+      puts user_critic.errors.full_messages
+    end
+  end
+end
+
 puts "Finish seeding Critic"
 # Finish seeding Critic
-
