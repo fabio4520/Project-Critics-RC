@@ -8,6 +8,8 @@ class CompaniesController < ApplicationController
 
   # GET /companies/1
   def show
+    @critics = @company.critics
+    @critic_new = Critic.new
   end
 
   # GET /companies/new
@@ -53,6 +55,6 @@ class CompaniesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def company_params
-      params.require(:company).permit(:name, :description, :start_date, :country)
+      params.require(:company).permit(:name, :description, :start_date, :country, :cover)
     end
 end

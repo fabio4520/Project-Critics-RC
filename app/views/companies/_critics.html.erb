@@ -1,0 +1,39 @@
+<div>
+    <h2>Critics (<%= critics.length %>)</h2>
+    <div>
+        <%= form_with url: "#", model: critic_new do |form| %>
+            <div>
+                <%= form.text_field :title, placeholder: "Critic title" %>
+                <% critic_new.errors.full_messages_for(:title).each do |message| %>
+                    <div><%= message %></div>
+                <% end %>
+            </div>
+            <div>
+                <%= form.text_area :body, placeholder: "Critic body..."%>
+                <% critic_new.errors.full_messages_for(:body).each do |message| %>
+                    <div><%= message %></div>
+                <% end %>
+            </div>
+            <div>
+                <%= form.submit %>
+            </div>
+        <% end %>
+    </div>
+    <div>
+        <% critics.each do |critic| %>
+            <div>
+                <div> <!--Critic header-->
+                    <h3><%= critic.title %></h3>
+                    <h4>By <%= critic.user.username %><h4>
+                </div>
+                <div>  <!--Critic body-->
+                    <p><%= critic.body %></div>
+                </div>
+                <div>   <!-- Critic footer -->
+                    <p> Send <%= critic.created_at %></p>
+                    <%= link_to "Delete comment"%>
+                </div>
+            </div>
+        <% end %>
+    </div>
+</div>

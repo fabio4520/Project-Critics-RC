@@ -1,22 +1,28 @@
 <div id="<%= dom_id company %>">
-  <p>
-    <strong>Name:</strong>
-    <%= company.name %>
-  </p>
+  <% if company.cover.has_attached? %>
+    <div>
+      <%= image_tag company.cover %>
+    </div>
+  <% else %>
+    <div>
+      <%= image_tag "companies/default_company_image.png" %>
+    </div>
+  <% end %>
 
-  <p>
-    <strong>Description:</strong>
-    <%= company.description %>
-  </p>
+  <h2><%= company.name%></h2>
+  <p><%= company.start_date %> - <%= company.country%></p>
+  
+  <!--Details-->
+  <div> 
+    <h3>Company Details</h3>
+    <p> <%= company.description %> </p>
+  </div>
 
-  <p>
-    <strong>Start date:</strong>
-    <%= company.start_date %>
-  </p>
+  <!--Critics-->
+  <%= render "critics", company: company, critics: critics, critic_new: critic_new %>
+  
+  <!--Games-->
+  <%= render "games", company: company%>
 
-  <p>
-    <strong>Country:</strong>
-    <%= company.country %>
-  </p>
-
+  <%= link_to "Back",  url_for(:back) %>
 </div>
