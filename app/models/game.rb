@@ -17,4 +17,6 @@ class Game < ApplicationRecord
     validates :cover, presence: false 
 
     enum category: { main_game: 0, expansion: 1}
+
+    has_one_attached :cover
 end
