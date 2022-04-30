@@ -1,0 +1,44 @@
+.wrapper{
+    border: 5px solid red;
+
+}
+
+.gap-4{
+    gap: 0.25rem;
+  }
+  
+  .b-16 {
+    margin-bottom: 1rem;
+  }
+
+  .flex {
+    display:flex;
+  }
+  
+  .flex-column {
+    flex-direction: column;
+  }
+
+  .textarea{
+    color: var(--gray-900);
+    width: 100%;
+    font-size: 1rem;
+    line-height: 3.75rem;
+    font-weight: 400;
+    padding: .5rem .75rem;
+    border-radius: 6px;
+    border: 1px solid #D3D3D3;
+  }
+
+  .btn-width100{
+    width: 100%;
+  }
+
+  .error-400{
+
+    font-family: 'Montserrat';
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 28px;
+      color:#C51C3B
+    }
