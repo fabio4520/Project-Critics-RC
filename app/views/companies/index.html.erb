@@ -1,14 +1,37 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Companies</h1>
+<div>
+  <h1>Companies</h1>
 
-<div id="companies">
-  <% @companies.each do |company| %>
-    <%= render company %>
-    <p>
-      <%= link_to "Show this company", company %>
-    </p>
-  <% end %>
+  <%= link_to "New company", new_company_path %>
+
+  <div id="companies">
+    <% @companies.each do |company| %>
+      <div>
+        <div> <!-- Company cover image -->
+          <% if company.cover.attached? %>
+            <%= image_tag company.cover %>
+          <% end %>
+        </div>
+        <div> <!-- Company description -->
+          <div> <!-- Header -->
+            <h2><%= company.name %></h2>
+            <p><%= company.created_at%> - <%= company.country%></p>
+          </div>
+          <div>
+            <p>company.description</p>
+          </div>
+          <div> <!-- Footer -->
+            <p><%= company.games.length %> games<p>
+            <div>
+              <%= link_to "Update"%>
+              <%= link_to "Delete"%>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>
 
-<%= link_to "New company", new_company_path %>
+
