@@ -20,6 +20,8 @@ puts "Finish"
 puts "Start seeding User"
 20.times do |n|
   v_user = Faker::Internet.user('username', 'email')
+  v_user[:password] = "password"
+  v_user[:password_confirmation] = "password"
   user  = User.new( v_user )
   if user.valid?
     user.save
