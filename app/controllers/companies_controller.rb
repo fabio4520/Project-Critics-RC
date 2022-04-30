@@ -24,7 +24,6 @@ class CompaniesController < ApplicationController
   # POST /companies
   def create
     @company = Company.new(company_params)
-
     if @company.save
       redirect_to @company, notice: "Company was successfully created."
     else
