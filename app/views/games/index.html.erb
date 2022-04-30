@@ -3,10 +3,13 @@
 <h1>Games</h1>
 
 <div id="games">
+
   <% @games.each do |game| %>
     <%= render game %>
     <p>
       <%= link_to "Show this game", game %>
+      <%= link_to "Edit this game", edit_game_path(game) %>
+      <%= button_to "Destroy this game", game, method: :delete %>
     </p>
   <% end %>
 </div>
