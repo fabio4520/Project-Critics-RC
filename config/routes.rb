@@ -1,15 +1,15 @@
 Rails.application.routes.draw do
   devise_for :users
   # resources :involved_companies
-  resources :users
+  # resources :users
   resources :genres
   resources :platforms
-  
-  resources :games do 
+
+  resources :games do
     resources :critics, only: %i[create destroy]
   end
-  
-  resources :companies do 
+
+  resources :companies do
     resources :critics, only: %i[create destroy]
   end
 
