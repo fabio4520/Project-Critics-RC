@@ -1,0 +1,31 @@
+<div>
+    <h2>Games(<%= company.games.length %>)</h2>
+    <% company.games.map do |game| %>
+        <div>
+        <% if game.cover.has_attached? %>
+            <%= image_tag game.cover%>
+        <% else %>
+            <%= image_tag "games/default_game_image.jpg"%>
+        <% end %>
+        </div>
+        <div>
+            <div>
+                <div>
+                    <h3> <%= game.name %> </h3>
+                    <p>  <%=  game.release_date %> </p>
+                </div>
+                <div>
+                    <h3> <%= game.rating %> </h3>
+                </div>
+            </div>
+            <div>
+                <p> <%= game.summary %> </p>
+                <div>
+                    <%= link_to "Edit this game" %>
+                    <%= link_to "Delete this game"  %>
+                <div>
+            </div>
+        </div>
+    <% end %>
+</div>
+
