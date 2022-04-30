@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   # resources :involved_companies
-  resources :users
+  # resources :users
   resources :genres
   resources :platforms
   
