@@ -22,7 +22,6 @@ class CompaniesController < ApplicationController
   # POST /companies
   def create
     @company = Company.new(company_params)
-
     if @company.save
       redirect_to @company, notice: "Company was successfully created."
     else
@@ -53,6 +52,6 @@ class CompaniesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def company_params
-      params.require(:company).permit(:name, :description, :start_date, :country)
+      params.require(:company).permit(:name, :description, :start_date, :country, :cover)
     end
 end
