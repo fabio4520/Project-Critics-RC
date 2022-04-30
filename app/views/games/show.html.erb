@@ -1,24 +1,30 @@
 <p style="color: green"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @game.name %>
-</p>
+<div>
+  <div>
+    <%= image_tag @game.cover, alt: "Image logo" %>
+  </div>
+  
+  <p>
+    <strong>Name:</strong>
+    <%= @game.name %>
+  </p>
 
-<p>
-  <strong>Summary:</strong>
-  <%= @game.summary %>
-</p>
+  <p>
+    <strong>Summary:</strong>
+    <%= @game.summary %>
+  </p>
 
-<p>
-  <strong>Release date:</strong>
-  <%= @game.release_date %>
-</p>
+  <p>
+    <strong>Release date:</strong>
+    <%= @game.release_date %>
+  </p>
 
-<p>
-  <strong>Rating:</strong>
-  <%= @game.rating %>
-</p>
+  <p>
+    <strong>Rating:</strong>
+    <%= @game.rating %>
+  </p>
+</div>
 
 <div>
   <%= link_to "Edit this game", edit_game_path(@game) %> |

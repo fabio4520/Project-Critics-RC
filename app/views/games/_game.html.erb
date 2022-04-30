@@ -1,10 +1,9 @@
 <div id="<%= dom_id game %>">
-
-  <%# <div>
-
-        <%= image_tag game.cover, alt: "Game image" %>
-
-  </div> %>
+  <% if game.cover.attached? %>
+    <div>
+      <%= image_tag game.cover, alt: "Image logo" %>
+    </div>
+  <% end %>
 
   <p>
     <strong>Name:</strong>
