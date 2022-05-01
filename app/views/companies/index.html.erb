@@ -1,37 +1,47 @@
-<p style="color: green"><%= notice %></p>
+<section class="section-sm">
+  <div class= "container-sm company">
+    <p style="color: green"><%= notice %></p>
+    <h1 class= "head-sm mb-1 ">Companies</h1>
 
-<div>
-  <h1>Companies</h1>
+    <button class="button button--primary button--sm mb-1">
+      <%= link_to "New company", new_company_path, class: "company-create-button" %>
+    </button>
 
-  <%= link_to "New company", new_company_path %>
-
-  <div id="companies">
-    <% @companies.each do |company| %>
-      <div>
-        <div> <!-- Company cover image -->
-          <% if company.cover.attached? %>
-            <%= image_tag company.cover %>
-          <% end %>
-        </div>
-        <div> <!-- Company description -->
-          <div> <!-- Header -->
-            <h2><%= company.name %></h2>
-            <p><%= company.created_at%> - <%= company.country%></p>
+    <div>
+      <% @companies.each do |company| %>
+        <div class="company--card">
+          <div class="company__card--image"> <!-- Company cover image -->
+            <%= link_to company_path(company) do%>
+              <% if company.cover.attached? %>
+                <%= image_tag company.cover %>
+              <% else %>
+                <%= image_tag "companies/default_company_image.png" %>
+              <% end %>
+            <% end %>
           </div>
-          <div>
-            <p>company.description</p>
-          </div>
-          <div> <!-- Footer -->
-            <p><%= company.games.length %> games<p>
-            <div>
-              <%= link_to "Update"%>
-              <%= link_to "Delete"%>
+          <div class="company__card--description"> <!-- Company description -->
+            <div class="company__card--description__header"> <!-- Header -->
+              <h2><%= company.name %></h2>
+              <p><%= company.created_at.year %> - <%= company.country%></p>
+            </div>
+            <div class="company__card--description__body">
+              <p><%= company.description %></p>
+            </div>
+            <div class="company__card--description__footer"> <!-- Footer -->
+              <p><%= company.games.length %> games<p>
+              <div class= "company__card--description__footer--buttons ">
+                <%= link_to edit_company_path(company) do %>
+                  <% image_tag "icons/edit.png"%>
+                <% end %>
+                <%= link_to company_path(company), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
+                  <% image_tag "icons/erased.png"%>
+                <% end %>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
-</div>
-
+</section>  
 

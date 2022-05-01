@@ -10,8 +10,8 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
 
+  <body>
     
     <%# <p class="notice"> %>
       <%#= notice %>
@@ -38,8 +38,9 @@
 
     <% else %>
     <% end %>
-                
+  
     <%= yield %>
+    <%= render "layouts/footer"%>
 
   </body>
 </html>

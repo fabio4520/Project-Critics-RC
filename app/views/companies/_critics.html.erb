@@ -1,39 +1,39 @@
 <div>
-    <h2>Critics (<%= critics.length %>)</h2>
-    <div>
-        <%= form_with url: "#", model: critic_new do |form| %>
-            <div>
-                <%= form.text_field :title, placeholder: "Critic title" %>
+    <div class="company-critics--create">
+        <%= form_with url: company_critics_path(company), model: critic_new do |form| %>
+            <div class="mb-0.5">
+                <%= form.text_field :title, placeholder: "Critic title", class: "input" %>
                 <% critic_new.errors.full_messages_for(:title).each do |message| %>
                     <div><%= message %></div>
                 <% end %>
             </div>
             <div>
-                <%= form.text_area :body, placeholder: "Critic body..."%>
+                <%= form.text_area :body, placeholder: "Critic body...", class: "input"%>
                 <% critic_new.errors.full_messages_for(:body).each do |message| %>
                     <div><%= message %></div>
                 <% end %>
             </div>
             <div>
-                <%= form.submit %>
+                <%= form.submit class: "button button--primary btn-width100 overline"%>
             </div>
         <% end %>
     </div>
-    <div>
-        <% critics.each do |critic| %>
-            <div>
-                <div> <!--Critic header-->
-                    <h3><%= critic.title %></h3>
-                    <h4>By <%= critic.user.username %><h4>
-                </div>
-                <div>  <!--Critic body-->
-                    <p><%= critic.body %></div>
-                </div>
-                <div>   <!-- Critic footer -->
-                    <p> Send <%= critic.created_at %></p>
-                    <%= link_to "Delete comment"%>
-                </div>
+    <% critics.each do |critic| %>
+        <div class="company-critics">
+            <div class="company-critics__header"> <!--Critic header-->
+                <h3><%= critic.title %></h3>
+                <p>By <%= critic.user.username %></p>
             </div>
-        <% end %>
-    </div>
+            <div class="company-critics__body">  <!--Critic body-->
+                <p><%= critic.body %></p>
+            </div>
+            <div class="company-critics__footer">   <!-- Critic footer -->
+                <p> Send <%= time_ago_in_words(critic.created_at) %> ago</p>
+                <%#= link_to "Delete critic",  company_critic_path(company, critic),  method: "delete" %>
+                <%= link_to company_critic_path(company, critic), data: { turbo_method: :delete } do %>
+                    <%= image_tag "icons/erased.png"%>
+                <% end %>
+            </div>
+        </div>
+    <% end %>
 </div>
