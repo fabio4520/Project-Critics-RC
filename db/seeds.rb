@@ -27,6 +27,7 @@ puts "Start seeding User"
     user.save
   else
     puts "Cannot create user #{v_user}"
+    puts user.errors.full_messages
   end
 end
 puts "Finish seeding Users"
