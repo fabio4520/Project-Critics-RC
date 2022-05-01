@@ -1,3 +1,11 @@
+body
+{
+  background-color: #E5E5E5;
+}
+.background_white
+{
+  background-color: #FFFFFF;
+}
 .alert_not_logged_in
 {
   position: absolute;
@@ -14,11 +22,12 @@
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  padding: 8px
+  padding: 8px;
+  border: 2px solid var(--gray-400);
 }
 .alert_not_logged_in:hover
 {
-  transform: scale(1.2);
+  transform: scale(1.1);
   transition: ease 0.75s;
 }
 .flex
@@ -42,4 +51,28 @@
 .field, .margin_block_start
 {
   margin-block-start: 16px;
+}
+.button--new
+{
+  background-color: var(--pink-400);
+  color: var(--white);
+}
+
+.button--new:hover {
+  background-color: var(--pink-500);
+}
+
+.button--new:active {
+  background-color: var(--pink-600);
+}
+
+.button--new:focus {
+  outline: 2px solid var(--pink-600);
+  outline-offset: 2px;
+}
+
+.button--new:disabled {
+  opacity: 0.6;
+  cursor: default;
+  background-color: var(--pink-400);
 }

@@ -24,25 +24,22 @@
       </div>
     <% end %>
 
-    <section class = "section-md">
-      <div class = "container-md">        
+           
 
-        <% if current_user %>
-          <% if current_user.admin?%>
-            <p>Welcome, <%= current_user.username %> you are an admin</p>
-          <% else %>
-            <p>Welcome, <%= current_user.username %></p>
-          <% end %>
+    <% if current_user %>
+      <% if current_user.admin?%>
+        <p>Welcome, <%= current_user.username %> you are an admin</p>
+      <% else %>
+        <p>Welcome, <%= current_user.username %></p>
+      <% end %>
 
-          <%= link_to "Edit profile", edit_user_registration_path(current_user) %>
-          <%= link_to "Logout", destroy_user_session_path, data: { turbo_method: :delete } %>
+      <%= link_to "Edit profile", edit_user_registration_path(current_user) %>
+      <%= link_to "Logout", destroy_user_session_path, data: { turbo_method: :delete } %>
 
-        <% else %>
-        <% end %>
-                    
-        <%= yield %>
-      </div>
-    </section>
+    <% else %>
+    <% end %>
+                
+    <%= yield %>
 
   </body>
 </html>
