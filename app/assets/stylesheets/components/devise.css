@@ -13,6 +13,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  align-items: center;
   padding: 8px
 }
 .alert_not_logged_in:hover
