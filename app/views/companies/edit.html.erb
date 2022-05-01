@@ -1,10 +1,12 @@
-<h1>Editing company</h1>
-
-<%= render "form", company: @company %>
-
-<br>
-
-<div>
-  <%= link_to "Show this company", @company %> |
-  <%= link_to "Back to companies", companies_path %>
-</div>
+<section class="section-sm">
+  <div class="container-sm">
+    <h1 class="head-sm mb-1">Editing company</h1>
+    <%= render "form", company: @company %>
+    <div>
+      <%#= link_to "Show this company", @company %> 
+      <button class="button button--default btn-width100 overline">
+        <%= link_to "Back to companies", companies_path, class: "gray-700 text-decoration-none" %>
+      </button>
+    </div>
+  </div>
+</section>

@@ -16,6 +16,7 @@
 .navbar--links {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5em;
   padding: 0;
   flex-wrap: wrap;
@@ -61,12 +62,18 @@
   .navbar--links {
     flex-direction: column;
     gap: 0.5em;
+    margin-top: 0px;
     padding-bottom: 1rem;
   }
 
   .navbar--links li:last-child {
     width: 100%;
   }
+
+  .navbar--links li:nth-last-child(2) {
+    width: 100%;
+  }
+
 
   .expandable {
     display: none;
@@ -86,33 +93,13 @@
     align-items: center;
   }
 
-  #menu-mobile:checked ~ * #toggle-open,
-  #menu-mobile:not(:checked) ~ * #toggle-close {
+  #menu-mobile:checked ~  #toggle-open,
+  #menu-mobile:not(:checked) ~ #toggle-close {
     opacity: 0;
-    animation: spin 1s linear;
   }
   
   #toggle-close,
   #toggle-open  {
-    transition: opacity 1s linear;
+    transition: opacity .5s linear;
   }
-
-  @keyframes spin {
-    0% {
-      transform: rotate(0deg);
-    }
-    25% {
-      transform: rotate(90deg);
-    }
-    50% {
-      transform: rotate(180deg);
-    }
-    75% {
-      transform: rotate(270deg);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
-  }
-
 }

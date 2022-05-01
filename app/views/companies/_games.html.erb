@@ -1,29 +1,38 @@
 <div>
-    <h2>Games(<%= company.games.length %>)</h2>
+    <h2 class="company-games--header mb-1">Games(<%= company.games.length %>)</h2>
     <% company.games.map do |game| %>
-        <div>
-        <% if game.cover.has_attached? %>
-            <%= image_tag game.cover%>
-        <% else %>
-            <%= image_tag "games/default_game_image.jpg"%>
-        <% end %>
-        </div>
-        <div>
-            <div>
-                <div>
-                    <h3> <%= game.name %> </h3>
-                    <p>  <%=  game.release_date %> </p>
-                </div>
-                <div>
-                    <h3> <%= game.rating %> </h3>
-                </div>
+        <div class="company-games__card">
+            <div class="company-games__card--image"> <!--Image-->
+                <% if game.cover.attached? %>
+                    <%= image_tag game.cover%>
+                <% else %>
+                    <%= image_tag "games/default_game_image.jpg"%>
+                <% end %>
             </div>
-            <div>
-                <p> <%= game.summary %> </p>
-                <div>
-                    <%= link_to "Edit this game" %>
-                    <%= link_to "Delete this game"  %>
-                <div>
+            <div class="company-games__card--decription"> <!-- Description -->
+                <div class="company-games__card--decription__header">
+                    <div class="company-games__card--decription__header--title">
+                        <h3> <%= game.name %> </h3>
+                        <p>  <%=  game.release_date.year %> </p>
+                    </div>
+                    <div class="company-games__card--decription__header--rating">
+                        <h3> <%= game.rating %> </h3>
+                    </div>
+                </div>
+                <div class="company-games__card--decription__body">
+                    <p><%= game.summary %></p>
+                </div>
+                <div class="company-games__card--decription__footer">
+                    <p><%= game.critics.length %> critics </p>
+                    <div class="company-games__card--decription__footer---buttons">
+                        <%= link_to do %>
+                            <%= image_tag "icons/edit.png"%>
+                        <% end %>
+                        <%= link_to do %>
+                            <%= image_tag "icons/erased.png"%>
+                        <% end %>
+                    </div>
+                </div>
             </div>
         </div>
     <% end %>

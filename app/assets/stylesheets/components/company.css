@@ -1,0 +1,318 @@
+.company{
+    padding: 0px 16px;
+    background-color: var(--gray-100) ;
+    min-width: 328px;
+}
+/* For company index */
+.company-create-button {
+    color: white;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-family: Inter;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 1.25px;
+    line-height: 16px;
+    text-align: center;
+}
+
+.company--card {
+    background-color: white;
+    display:  flex;
+    align-items: center;
+    margin-bottom: 16px;
+    min-width: 328px;
+}
+
+.company__card--image img {
+    height: 160px;
+    width: 120px;
+    object-fit: cover;
+}
+
+.company__card--description {
+    width: 100%;
+    margin: 8px;
+}
+
+.company__card--description__header {
+    margin-bottom: 10px;
+}
+
+.company__card--description__header h2 {
+    font-family: var(--font-primary);
+    font-style: normal;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 28px;
+}
+
+.company__card--description__header p {
+    color: var(--gray-500);
+    font-family: var(--font-primary);
+    font-style: normal;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 16px;
+}
+
+.company__card--description__body {
+    margin-bottom: 10px;
+}
+
+.company__card--description__body p {
+    font-family: var(--font-primary);
+    font-style: normal;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 16px;
+}
+
+.company__card--description__footer {
+    display:  flex;
+    justify-content: space-between;
+}
+
+.company__card--description__footer p {
+    color: var(--gray-500);
+    font-family: var(--font-primary);
+    font-style: normal;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 16px;
+}
+
+.company__card--description__footer--buttons {
+    display: flex;
+    gap: 12px;
+}
+
+/* For show a company */
+/* Game section *********************************************************************/
+.company--banner-img {
+    min-width: 328px;
+    height: 160px;
+    margin-bottom: 16px;
+}
+
+.company--banner-img img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.company-games--header {
+    font-family: var(--font-secondary);
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 28px;
+}
+
+.company-games__card {
+    background-color: white;
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+    min-width: 328px;
+}
+
+.company-games__card--image img {
+    min-height: 160px;
+    min-width: 120px;
+    object-fit: cover;
+}
+.company-games__card--decription {
+    margin: 8px;
+    width: 100%;
+}
+
+.company-games__card--decription__header {
+    display:  flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.company-games__card--decription__header--title h3 {
+    font-family: var(--font-primary);
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 28px;
+}
+
+.company-games__card--decription__header--title p {
+    color: var(--gray-500);
+    font-family: var(--font-primary);
+    font-style: normal;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 16px;
+}
+
+.company-games__card--decription__header--rating {
+    background-color: #757575;
+    color: white;
+    padding: 4px;
+    border-radius: 4px;
+    height: 32px;
+    width: 43px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.company-games__card--decription__header--rating h3 {
+    font-family: var(--font-primary);
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.company-games__card--decription__body {
+    margin-bottom: 10px;
+}
+
+.company-games__card--decription__body p {
+    font-family: var(--font-primary);
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+}
+
+.company-games__card--decription__footer {
+    display:  flex;
+    justify-content: space-between;
+}
+
+.company-games__card--decription__footer p {
+    color: var(--gray-500);
+    font-family: var(--font-primary);
+    font-style: normal;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 16px;
+}
+
+.company-games__card--decription__footer---buttons {
+    display: flex;
+    gap: 12px;
+}
+
+/* Critic section *********************************************************************/
+.company-critics--header {
+    font-family: var(--font-secondary);
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 28px;
+}
+
+.company-critics--create {
+    min-width: 328px;
+    margin-bottom: 24px;
+}
+
+.company-critics {
+    border-top: 2px solid #A8A8A8;
+    padding: 8px 0px 0px 0px;
+    margin-bottom: 16px;
+}
+
+.company-critics__header {
+    margin-bottom: 8px;
+}
+
+.company-critics__header h3 {
+    font-family: var(--font-primary);
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 28px;
+}
+
+.company-critics__header p {
+    color: var(--gray-500);
+    font-family: var(--font-primary);
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.company-critics__body {
+    margin-bottom: 8px;
+}
+
+.company-critics__body p {
+    font-family: var(--font-primary);
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.company-critics__footer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.company-critics__footer p {
+    color: var(--gray-500);
+    font-family: var(--font-primary);
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+/* For company form */
+.company-form__label {
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-family: var(--font-primary);
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+}
+
+
+/*Adding tabs*/
+.tabs {
+    display: flex;
+    justify-content: space-evenly;
+    max-height: 32px;
+    margin-bottom: 16px;
+}
+
+.tabs-element {
+    cursor: pointer;
+}
+
+#c_critics, 
+#c_games,
+.expandable-critics, 
+.expandable-games {
+    display: none;
+  }
+
+
+#c_critics:checked ~ .expandable-games {
+    display: block;
+}
+#c_games:checked ~ .expandable-critics {
+    display: block;
+}
+
+#c_games:checked ~ .tabs .tabs-element-critics{
+    border-bottom: 3px solid red;
+}
+
+#c_critics:checked ~ .tabs .tabs-element-games {
+    border-bottom: 3px solid red;
+}
+
+
