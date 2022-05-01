@@ -1,8 +1,14 @@
-<h2 class = "center">Sign up</h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <section class = "section-md">
-    <div class = "container-md">
+
+<section class = "section-md flex">
+  <div class = "container-md background_white">
+    <h2 class = "center">Create account</h2>
+    <p class="continue_with ">Continue with</p>
+    <%= link_to "GITHUB", "#", class: "sign_in_button button text-decoration-none button--primary"%>
+    <%= link_to "TWITTER", "#", class: "sign_in_button button text-decoration-none button--primary"%>
+
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+
       <%= render "devise/shared/error_messages", resource: resource %>
 
       <div class="field">
@@ -22,19 +28,21 @@
         <% if @minimum_password_length %>
         <em>(<%= @minimum_password_length %> characters minimum)</em>
         <% end %><br />
-        <%= f.password_field :password, autocomplete: "new-password" %>
+        <%= f.password_field :password, autocomplete: "new-password", placeholder: "********" %>
       </div>
 
       <div class="field">
         <%= f.label :password_confirmation %><br />
-        <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "********" %>
       </div>
 
-      <div class="actions">
-        <%= f.submit "Sign up" %>
+      <div class="actions margin_block_start">
+        <%= f.submit "Sign up", class: "button text-decoration-none button--primary" %>
       </div>
-    </div>
-  </section>
-<% end %>
 
-<%= render "devise/shared/links" %>
+    <% end %>
+    <%# <div class="container-md"> %>
+      <%= render "devise/shared/links" %>
+    <%# </div> %>
+  </div>
+</section>
