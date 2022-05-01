@@ -142,6 +142,4 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_30_165618) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "critics", "users"
   add_foreign_key "games", "games", column: "parent_id"
-  add_foreign_key "involved_companies", "companies"
-  add_foreign_key "involved_companies", "games"
 end
