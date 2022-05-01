@@ -29,15 +29,24 @@ class CriticsController < ApplicationController
   def destroy
     if params[:game_id]
       @game = Game.find(params[:game_id])
-      comment = @game.critics.find(params[:id])
-      comment.delete
-      redirect_to game_path(@game), notice: "Critic was successfully destroyed."
+      @comment = @game.critics.find(params[:id])
+      # comment.delete
+      # redirect_to game_path(@game), action: "get", notice: "Critic was successfully destroyed."
    elsif params[:company_id]
      @company = Company.find(params[:company_id])
-     comment = @company.critics.find(params[:id])
-     comment.delete
-     redirect_to company_path(@company), notice: "Critic was successfully destroyed."
+     @comment = @company.critics.find(params[:id])
+     # comment.delete
+     # redirect_to company_path(@company), action: "get", notice: "Critic was successfully destroyed."
    end
+   @comment.delete
+    # if params[:game_id]
+    #   # redirect_to game_path(@game), action: "get", notice: "Critic was successfully destroyed."
+    #   render game_path(@game)
+    # elsif params[:company_id]
+    #   # redirect_to company_path(@company), action: "get", notice: "Critic was successfully destroyed."
+    #   render company_path(@company)
+    # end
+    render json: nil, status: :no_content
   end
 
   private

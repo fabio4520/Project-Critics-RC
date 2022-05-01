@@ -1,0 +1,57 @@
+    <header class="header">
+      <!-- bg gray -->
+      <div class="container-lg">
+        <nav class="navbar">
+          <input type="checkbox" id="menu-mobile" />
+
+          <a href="/companies" class="text-decoration-none header--menu-mobile">
+            <!-- content -->
+            <!-- <%= link_to companies_path, class: "text-decoration-none header--menu-mobile" do %> -->
+            <%= image_tag "icons/logo.png" %>
+          </a>
+
+            <!-- option 1 -->
+            <label for="menu-mobile" id="toggle-close">
+              <i class="ri-close-fill ri-xl"></i>
+            </label>
+
+            <!-- option 2 -->
+            <label for="menu-mobile" id="toggle-open">
+              <i class="ri-menu-line ri-xl"></i>
+            </label>
+          <!-- <% end %> -->
+            
+          <ul class="expandable navbar--links list-style-none">
+            <li>
+              <a href="#" class="link text-sm">Message</a>
+            </li>
+            <li>
+              <a href="#" class="link text-sm">Profile</a>
+            </li>
+            <li>
+              <a href="#" class="link text-sm">Games</a>
+            </li>
+            <li>
+              <%= link_to "Companies", companies_path, class: "link text-sm" %>
+            </li>
+            <li>
+              <a
+                href="#"
+                type="button"
+                class="button button--secondary button--sm text-decoration-none"
+                >Logout</a
+              >
+            </li>
+            <li>
+              <a
+                href="#"
+                type="button"
+                class="button button--primary button--sm text-decoration-none"
+                >Login</a
+              >
+            </li>
+          </ul>
+
+        </nav>
+      </div>   
+</header>

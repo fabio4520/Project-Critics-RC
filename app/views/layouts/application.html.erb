@@ -10,7 +10,9 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
+  <body class="body">
+    <%= render "layouts/header"%>
+
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     
@@ -33,7 +35,8 @@
     <%= link_to "Create account", new_user_registration_path %>
     <%= link_to "login", new_user_session_path %>
     <% end %>
-
+  
     <%= yield %>
+    <%= render "layouts/footer"%>
   </body>
 </html>

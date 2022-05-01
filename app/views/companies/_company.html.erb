@@ -1,28 +1,45 @@
-<div id="<%= dom_id company %>">
-  <% if company.cover.has_attached? %>
-    <div>
-      <%= image_tag company.cover %>
-    </div>
-  <% else %>
-    <div>
-      <%= image_tag "companies/default_company_image.png" %>
-    </div>
-  <% end %>
-
-  <h2><%= company.name%></h2>
-  <p><%= company.start_date %> - <%= company.country%></p>
-  
-  <!--Details-->
-  <div> 
-    <h3>Company Details</h3>
-    <p> <%= company.description %> </p>
+<div>
+  <div class="company--banner-img">
+    <% if company.cover.attached? %>
+        <%= image_tag company.cover %>
+    <% else %>
+        <%= image_tag "companies/default_company_image.png" %>
+    <% end %>
   </div>
 
-  <!--Critics-->
-  <%= render "critics", company: company, critics: critics, critic_new: critic_new %>
-  
-  <!--Games-->
-  <%= render "games", company: company%>
+  <h2 class="head-sm"><%= company.name%></h2>
+  <p class="text-xs mb-1.5"><%= company.start_date %> - <%= company.country%></p>
 
-  <%= link_to "Back",  url_for(:back) %>
+  <input type="radio" id="c_critics" name="selection" checked>
+  <input type="radio" id="c_games" name="selection" >
+  
+  <div class="tabs">
+    <div class="tabs-element-games">
+      <label for="c_critics" id="toggle_games">
+          <h3 class="text-md mb-1.5">Company Details</h3>
+      </label>
+    </div>
+    <div class="tabs-element-critics">
+      <label for="c_games" id="toggle_critics">
+        <h2 class="text-md mb-1.5">Critics (<%= critics.length %>)</h2>
+      </label>
+    </div>
+  </div>
+
+    <!--Details-->
+  <div class="expandable-games"> 
+    <div class="mb-1.5">
+      <p class="text-xs"> <%= company.description %> </p>
+    </div>
+    <%= render "games", company: company%>
+  </div>
+
+
+  <!--Critics-->
+  <div class="expandable-critics">
+    <%= render "critics", company: company, critics: critics, critic_new: critic_new %>
+  </div>
+  <button class="button--default category--form__button">
+    <%= link_to "Back", companies_path, class: "gray-700 text-decoration-none"   %>
+  </button>
 </div>
