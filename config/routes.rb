@@ -5,7 +5,17 @@ Rails.application.routes.draw do
   resources :genres
   resources :platforms
 
-  resources :games do
+  
+  resources :games do 
+    post "add_genre", on: :member
+    post "add_platform", on: :member
+    post "add_developer", on: :member
+    post "add_publisher", on: :member
+    delete "remove_genre", on: :member
+    delete "remove_platform", on: :member
+    delete "remove_developer", on: :member
+    delete "remove_publisher", on: :member
+
     resources :critics, only: %i[create destroy]
   end
 
@@ -17,4 +27,5 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "games#index"
+
 end

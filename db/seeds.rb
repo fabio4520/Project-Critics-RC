@@ -54,7 +54,7 @@ puts "Finish seeding Companies"
 # ######################
 puts "Start seeding Platform"
 # Start seeding Platform
-5.times do |n|
+20.times do |n|
   platform = Platform.new( name: Faker::Game.platform, category: (0..5).to_a.sample )
   if platform.valid?
     platform.save
@@ -69,7 +69,7 @@ puts "Finish seeding Platform"
 puts "Start seeding Genre"
 # Start seeding Genre
 # 5 --> randomly chosen number
-5.times do |n|
+20.times do |n|
   genre = Genre.new( name: Faker::Game.genre )
   if genre.valid?
     genre.save
@@ -100,8 +100,14 @@ puts "Start seeding Games"
     game.cover.attach(io: File.open("db/img/game #{game_number}.png"), filename: "game #{game_number}.png")
     # Adding involved_companies relation
     3.times do 
-      game.involved_companies.create(company: Company.all.sample, developer: [true, false].sample, publisher: [true, false].sample )
+      game.involved_companies.create(company: Company.all.sample, developer: [true, false].sample, publisher: [true, false].sample )  
     end
+    
+    5.times do
+      game.genres << Genre.all.sample
+      game.platforms << Platform.all.sample
+    end
+
   else
     puts "Cannot create game #{game}"
   end
