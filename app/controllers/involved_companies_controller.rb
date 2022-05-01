@@ -1,4 +1,5 @@
 class InvolvedCompaniesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_involved_company, only: %i[ show edit update destroy ]
 
   # GET /involved_companies

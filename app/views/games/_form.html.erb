@@ -28,7 +28,7 @@
 
   <div>
     <%= form.label :category, style: "display: block" %>
-    <%= form.text_field :category %>
+    <%= form.select :category, Game.categories.keys.map{ |key| [key.humanize, key] }, selected: game.category || :draft %>
   </div>
 
   <div>

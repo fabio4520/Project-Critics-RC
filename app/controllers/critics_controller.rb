@@ -1,5 +1,6 @@
 class CriticsController < ApplicationController
-  # before_action :set_critic, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!
+  before_action :set_critic, only: %i[ show edit update destroy ]
 
   # POST /games/:game_id/critics
   # POST /companies/:company_id/critics
