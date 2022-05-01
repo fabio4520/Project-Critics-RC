@@ -1,3 +1,11 @@
+body
+{
+  background-color: #E5E5E5;
+}
+.background_white
+{
+  background-color: #FFFFFF;
+}
 .alert_not_logged_in
 {
   position: absolute;
@@ -6,18 +14,65 @@
   top: 20px;
   margin-left: auto; 
   margin-right: auto;
-  width: 360px;
-  height: 96px;
-  background-color: var(--gray-300);
+  max-width: 360px;
+  min-height: 96px;
+  background-color: var(--gray-200);
   border-radius: 10px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  padding: 8px
+  align-items: center;
+  padding: 8px;
+  border: 2px solid var(--gray-400);
 }
-
 .alert_not_logged_in:hover
 {
-  transform: scale(1.2);
-  transition: ease 2s;
+  transform: scale(1.1);
+  transition: ease 0.75s;
+}
+.flex
+{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+.sign_in_button
+{
+  /* width: 50%;
+  margin: 0 auto; */
+  max-width: 100px;
+  display: inline-block;
+}
+.continue_with
+{
+  margin-block-start: 30px;
+}
+.field, .margin_block_start
+{
+  margin-block-start: 16px;
+}
+.button--new
+{
+  background-color: var(--pink-400);
+  color: var(--white);
+}
+
+.button--new:hover {
+  background-color: var(--pink-500);
+}
+
+.button--new:active {
+  background-color: var(--pink-600);
+}
+
+.button--new:focus {
+  outline: 2px solid var(--pink-600);
+  outline-offset: 2px;
+}
+
+.button--new:disabled {
+  opacity: 0.6;
+  cursor: default;
+  background-color: var(--pink-400);
 }
