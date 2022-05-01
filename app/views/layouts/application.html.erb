@@ -11,29 +11,38 @@
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+
     
-    <% if current_user %>
+    <%# <p class="notice"> %>
+      <%#= notice %>
+    <%# </p> %>
 
-      <% if current_user.admin?%>
-        <p>Welcome, <%= current_user.username %> you are an admin</p>
-      <% else %>
-        <p>Welcome, <%= current_user.username %></p>
-      <% end %>
-
-      <%= link_to "Edit profile", edit_user_registration_path(current_user) %>
-      <%= link_to "Logout", destroy_user_session_path, data: { turbo_method: :delete } %>
-
-    <% else %>
+    <% if alert %>
       <div class = "alert_not_logged_in">
-        <p>Sign in to start criting games and companies</p>
+        <p><%= alert %></p>
         <%= link_to "Sign in", new_user_session_path , class: " button text-decoration-none button--primary" %>
       </div>
-    <%= link_to "Create account", new_user_registration_path %>
-    <%= link_to "login", new_user_session_path %>
     <% end %>
 
-    <%= yield %>
+    <section class = "section-md">
+      <div class = "container-md">        
+
+        <% if current_user %>
+          <% if current_user.admin?%>
+            <p>Welcome, <%= current_user.username %> you are an admin</p>
+          <% else %>
+            <p>Welcome, <%= current_user.username %></p>
+          <% end %>
+
+          <%= link_to "Edit profile", edit_user_registration_path(current_user) %>
+          <%= link_to "Logout", destroy_user_session_path, data: { turbo_method: :delete } %>
+
+        <% else %>
+        <% end %>
+                    
+        <%= yield %>
+      </div>
+    </section>
+
   </body>
 </html>
