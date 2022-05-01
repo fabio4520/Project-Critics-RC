@@ -1,4 +1,5 @@
 class PlatformsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_platform, only: %i[ show edit update destroy ]
 
   # GET /platforms

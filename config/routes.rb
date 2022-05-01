@@ -27,5 +27,5 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "games#index"
-
+  # get "/profile", to: "users#show", as: "user"
 end

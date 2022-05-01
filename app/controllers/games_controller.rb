@@ -1,4 +1,5 @@
 class GamesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_game, only: %i[ show edit update destroy add_genre add_platform add_developer add_publisher remove_genre remove_platform remove_developer remove_publisher]
 
   # GET /games

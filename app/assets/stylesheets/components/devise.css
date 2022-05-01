@@ -1,0 +1,23 @@
+.alert_not_logged_in
+{
+  position: absolute;
+  left: 0; 
+  right: 0;
+  top: 20px;
+  margin-left: auto; 
+  margin-right: auto;
+  width: 360px;
+  height: 96px;
+  background-color: var(--gray-300);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 8px
+}
+
+.alert_not_logged_in:hover
+{
+  transform: scale(1.2);
+  transition: ease 2s;
+}
