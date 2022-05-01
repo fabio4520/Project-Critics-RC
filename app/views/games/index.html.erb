@@ -1,17 +1,46 @@
-<p style="color: green"><%= notice %></p>
+<section class="section-sm">
+  <div class="container-sm">
+    <p style="color: green"><%= notice %></p>
+    <h1 class="head-sm mb-1">Games</h1>
 
-<h1>Games</h1>
+    <button class="button button--primary button-sm mb-1">
+      <%= link_to "New game", new_game_path, class: "game-create-button"%>
+    </button>
 
-<%= link_to "New game", new_game_path %>
-
-<div id="games">
-
-  <% @games.each do |game| %>
-    <%= render game %>
-    <p>
-      <%= link_to "Show this game", game %>
-      <%= link_to "Edit this game", edit_game_path(game) %>
-      <%= button_to "Destroy this game", game, method: :delete %>
-    </p>
-  <% end %>
-</div>
+    <div>
+      <% @games.each do |game| %>
+        <div class="game--card">
+          <div class="game__card--image">
+            <%= link_to game_path(game) do%>
+              <% if game.cover.attached? %>
+                <%= image_tag game.cover %>
+              <% else %>
+                <%= image_tag "games/default_game_image.jpg"%>
+              <% end %>
+            <% end %>
+          </div>
+          <div class="game__card--description">
+            <div class="game__card--description__header">
+              <h2><%= game.name %></h2>
+              <p><%= game.release_date.year %></p>
+            </div>
+            <div class="game__card--description__body">
+              <p><%= game.summary %></p>
+            </div>
+            <div class="game__card--description__footer">
+              <p><%= game.critics.length %> critics</p>
+              <div class="game__card--description__footer--buttons">
+                <%= link_to  edit_game_path(game) do %>
+                  <% image_tag "icons/edit.png" %>
+                <% end %>
+                <%= link_to game_path(game), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
+                  <% image_tag "icons/erased.png"%>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>

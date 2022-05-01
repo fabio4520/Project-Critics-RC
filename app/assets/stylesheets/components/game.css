@@ -1,0 +1,83 @@
+.game-create-button {
+    color: white;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-family: Inter;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 1.25px;
+    line-height: 16px;
+    text-align: center;
+}
+
+.game--card {
+    background-color: white;
+    display:  flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-bottom: 16px;
+    min-width: 328px;
+}
+
+.game__card--image img {
+    min-height: 160px;
+    min-width: 120px;
+    object-fit: cover;
+}
+
+.game__card--description {
+    width: 100%;
+    margin: 8px;
+}
+
+.game__card--description__header {
+    margin-bottom: 10px;
+}
+
+.game__card--description__header h2 {
+    font-family: var(--font-primary);
+    font-style: normal;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 28px;
+}
+
+.game__card--description__header p {
+    color: var(--gray-500);
+    font-family: var(--font-primary);
+    font-style: normal;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 16px;
+}
+
+.game__card--description__body {
+    margin-bottom: 10px;
+}
+
+.game__card--description__body p {
+    font-family: var(--font-primary);
+    font-style: normal;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 16px;
+}
+
+.game__card--description__footer {
+    display:  flex;
+    justify-content: space-between;
+}
+
+.game__card--description__footer p {
+    color: var(--gray-500);
+    font-family: var(--font-primary);
+    font-style: normal;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 16px;
+}
+
+.game__card--description__footer--buttons {
+    display: flex;
+    gap: 12px;
+}
