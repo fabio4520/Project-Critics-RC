@@ -1,0 +1,83 @@
+.image_container
+{
+  min-width: 328px;
+  height: 200px;
+}
+.image_container .image
+{
+  object-fit: cover;
+  opacity: 0.8;
+  min-width: 328px;
+  max-height: 200px;
+  border-radius: 8px;
+}
+.game_id_header
+{
+  display: flex;
+  justify-content: space-between;
+}
+.game-name
+{
+  font-family: var(--font-secondary);
+  font-weight: 600;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  color: var(--gray-600);
+}
+.year_game
+{
+  font-family: var(--font-primary);
+  font-weight: 400;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  color: var(--gray-400)
+}
+.game_details
+{
+  border-bottom: 6px solid var(--pink-500);
+}
+.select_details_critics
+{
+  display: flex;
+  justify-content: space-around;
+}
+.labels_group
+{
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 450px;
+  gap: 6px;
+}
+.label
+{
+  font-family: var(--font-primary);
+  font-weight: 400;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  padding: 8px;
+  border-radius: 8px;
+  background-color: var(--gray-400);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: var(--white);
+}
+.label:hover
+{
+  transform: scale(1.05);
+  background-color: var(--gray-500);
+  transition: ease 0.4s;
+}
+
+/* EDIT GAMe */
+.flex-form
+{
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+.flex-form .border_8px
+{
+  border-radius: 6px;
+}

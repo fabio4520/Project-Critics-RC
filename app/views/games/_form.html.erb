@@ -11,37 +11,38 @@
     </div>
   <% end %>
 
-  <div>
+  <div class="field flex-form">
     <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
+    <%= form.text_field :name, class: "border_8px"%>
   </div>
 
-  <div>
+  <div class="field flex-form">
     <%= form.label :summary, style: "display: block" %>
-    <%= form.text_area :summary %>
+    <%= form.text_area :summary, class: "border_8px" %>
   </div>
 
-  <div>
+  <div class="field flex-form">
     <%= form.label :release_date, style: "display: block" %>
-    <%= form.date_field :release_date %>
+    <%= form.date_field :release_date, class: "border_8px" %>
   </div>
 
-  <div>
+  <div class="field flex-form">
     <%= form.label :category, style: "display: block" %>
     <%= form.select :category, Game.categories.keys.map{ |key| [key.humanize, key] }, selected: game.category || :draft %>
   </div>
 
-  <div>
+  <div class="field flex-form">
     <%= form.label :rating, style: "display: block" %>
-    <%= form.text_field :rating %>
+    <%= form.text_field :rating, class: "border_8px" %>
   </div>
   
-  <div>
+  <div class="flex-form margin_block_start">
     <%= form.label :cover, style: "display: block" %>
-    <%= form.file_field :cover %>
+    <%= image_tag @game.cover, alt: "Image logo", class: "image" %>
+    <%= form.file_field :cover, class: "border_8px margin_block_start" %>
   </div>
 
-  <div>
-    <%= form.submit %>
+  <div class="flex-form margin_block_start">
+    <%= form.submit class: "button button--primary"%>
   </div>
 <% end %>
