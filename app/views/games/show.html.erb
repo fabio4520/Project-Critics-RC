@@ -1,90 +1,126 @@
-<p style="color: green"><%= notice %></p>
+<section class = "section-md">
+  <div class = "container-md">
+    <div class="gray-100 padding-16px">
+      <p style="color: green"><%= notice %></p>
 
-<div class="gray-100, padding-16px">
-  <div class="image">
-    <%= image_tag @game.cover, alt: "Image logo", class: "image" %>
-  </div>
-  
-  <div class="game-name">
-    <%= @game.name %>
-  </div>
-  
-  <div>
-    <%= @game.rating %>
-  </div>
-
-  <div>
-    <strong>Summary:</strong>
-    <%= @game.summary %>
-  </div>
-
-  <div>
-    <strong>Genres:</strong>
-    <% @game.genres.map do |genre| %>
-      <div>
-        <%= genre.name %> | <%= link_to 'X', remove_genre_game_path(@game, genre_id: genre.id), data: { turbo_method: :delete } %>
+      <div class="image_container">
+        <%= image_tag @game.cover, alt: "Image logo", class: "image" %>
       </div>
-    <% end %>
-  </div>
 
-  <div>
-    <strong>Platforms:</strong>
-    <% @game.platforms.map do |platform| %>
-      <div>
-        <%= platform.name %> | <%= link_to 'X', remove_platform_game_path(@game, platform_id: platform.id), data: { turbo_method: :delete } %>
+      <div class="game_id_header margin_block_start">
+        <div class="game_name_year">
+          <div class="game-name">
+            <%= @game.name %>
+          </div>
+
+          <div class="year_game">
+            <%= @game.release_date.strftime('%Y') %>
+          </div>
+        </div>
+
+        <div class="button button--secondary">
+          <%= @game.rating %>
+        </div>
       </div>
-    <% end %>
+
+      <div class="select_details_critics margin_block_start">
+        <div>
+          <span class="game_details">Game Details</span>
+        </div>
+        <div>
+          <span class="game_details">Critics (<%=@game.critics.size%>)</span>
+        </div>
+      </div>
+
+      <div class="margin_block_start">
+        <%= @game.summary %>
+      </div>
+
+      <div>
+        <strong>Genres:</strong>
+        <div class="labels_group">
+          <% @game.genres.map do |genre| %>
+            <div class="label">
+              <%= genre.name %> | <%= link_to 'X', remove_genre_game_path(@game, genre_id: genre.id), data: { turbo_method: :delete } %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+
+      <div>
+        <strong>Platforms:</strong>
+        <div class="labels_group">
+          <% @game.platforms.map do |platform| %>
+            <div class="label">
+              <%= platform.name %> | <%= link_to 'X', remove_platform_game_path(@game, platform_id: platform.id), data: { turbo_method: :delete } %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+
+      <div>
+        <strong>Dev companies</strong>
+        <div class="labels_group">
+          <% @game.involved_companies.where(developer: true).each do |ic| %>
+            <div class="label">
+              <%= ic.company.name %> | <%= link_to 'X', remove_developer_game_path(@game, company_id: ic.id), data: { turbo_method: :delete } %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+
+      <div>
+        <strong>Pub companies</strong>
+        <div class="labels_group">
+          <% @game.involved_companies.where(publisher: true).each do |ic| %>
+          <div class="label">
+            <%= ic.company.name %> | <%= link_to 'X', remove_publisher_game_path(@game, company_id: ic.id), data: { turbo_method: :delete } %>
+          </div>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="margin_block_start">
+        <%= form_with(url: add_genre_game_path(@game)) do |form| %>
+          <%#= form.label :genre %>
+          <%= form.collection_select :genre_id, (Genre.all - @game.genres), :id, :name, { prompt: true } %>
+          <%= form.submit "ADD GENRE" %>
+        <% end %>
+      </div>
+
+      <div class="margin_block_start">
+        <%= form_with(url: add_platform_game_path(@game)) do |form| %>
+          <%#= form.label :platform %>
+          <%= form.collection_select :platform_id, (Platform.all - @game.platforms), :id, :name, { prompt: true } %>
+          <%= form.submit "ADD PLATFORM" %>
+        <% end %>
+      </div>
+
+      <div class="margin_block_start">
+        <%= form_with(url: add_developer_game_path(@game)) do |form| %>
+          <%= form.collection_select :company_id, (Company.all), :id, :name, { prompt: true }%>
+          <%= form.submit "ADD DEVELOPER"%>
+        <% end %>
+      </div>
+
+      <div class="margin_block_start">
+        <%= form_with(url: add_publisher_game_path(@game)) do |form| %>
+          <%= form.collection_select :company_id, (Company.all), :id, :name, { prompt: true }%>
+          <%= form.submit "ADD PUBLISHER"%>
+        <% end %>
+      </div>
+      
+    </div>
+
+
+    <%# CRITICS STARTS %>
+    <%# CRITICS FINISH  %>
+
+    <div class="gray-100">
+      <%= link_to "Edit this game", edit_game_path(@game), class:"text-decoration-none" %>
+      <%= link_to "Back to games", games_path, class:"text-decoration-none" %>
+
+      <%= button_to "Destroy this game", @game, method: :delete, class:"text-decoration-none margin_block_start" %>
+    </div>
   </div>
-
-  <div>
-    <strong>Dev companies</strong>
-    <% @game.involved_companies.where(developer: true).each do |ic| %>
-      <%= ic.company.name %> | <%= link_to 'X', remove_developer_game_path(@game, company_id: ic.id), data: { turbo_method: :delete } %>
-    <% end %>
-  </div>
-
-  <div>
-    <strong>Pub companies</strong>
-    <% @game.involved_companies.where(publisher: true).each do |ic| %>
-      <%= ic.company.name %> | <%= link_to 'X', remove_publisher_game_path(@game, company_id: ic.id), data: { turbo_method: :delete } %>
-    <% end %>
-  </div>
-
-  <div>
-    <%= form_with(url: add_genre_game_path(@game)) do |form| %>
-      <%= form.label :genre %>
-      <%= form.collection_select :genre_id, (Genre.all - @game.genres), :id, :name, { prompt: true } %>
-      <%= form.submit "ADD GENRE" %>
-    <% end %>
-  </div>
-
-  <div>
-    <%= form_with(url: add_platform_game_path(@game)) do |form| %>
-      <%= form.label :platform %>
-      <%= form.collection_select :platform_id, (Platform.all - @game.platforms), :id, :name, { prompt: true } %>
-      <%= form.submit "ADD PLATFORM" %>
-    <% end %>
-  </div>
-
-  <div>
-    <%= form_with(url: add_developer_game_path(@game)) do |form| %>
-      <%= form.collection_select :company_id, (Company.all), :id, :name, { prompt: true }%>
-      <%= form.submit "ADD DEVELOPER"%>
-    <% end %>
-  </div>
-
-  <div>
-    <%= form_with(url: add_publisher_game_path(@game)) do |form| %>
-      <%= form.collection_select :company_id, (Company.all), :id, :name, { prompt: true }%>
-      <%= form.submit "ADD PUBLISHER"%>
-    <% end %>
-  </div>
-  
-</div>
-
-<div class="gray-100">
-  <%= link_to "Edit this game", edit_game_path(@game) %> |
-  <%= link_to "Back to games", games_path %>
-
-  <%= button_to "Destroy this game", @game, method: :delete %>
-</div>
+</section>
