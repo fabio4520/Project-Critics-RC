@@ -22,11 +22,13 @@
           <!-- <% end %> -->
             
           <ul class="expandable navbar--links list-style-none">
+            <% if current_user.admin? %>
+                <li>
+                  <a href="#" class="link text-sm">Message</a>
+                </li>
+            <% end %>
             <li>
-              <a href="#" class="link text-sm">Message</a>
-            </li>
-            <li>
-              <a href="#" class="link text-sm">Profile</a>
+              <%= link_to "Edit profile", edit_user_registration_path(current_user), class: "link text-sm"%>
             </li>
             <li>
               <%= link_to "Games", games_path, class: "link text-sm" %>
@@ -34,22 +36,15 @@
             <li>
               <%= link_to "Companies", companies_path, class: "link text-sm" %>
             </li>
-            <li>
-              <a
-                href="#"
-                type="button"
-                class="button button--secondary button--sm text-decoration-none"
-                >Logout</a
-              >
-            </li>
-            <li>
-              <a
-                href="#"
-                type="button"
-                class="button button--primary button--sm text-decoration-none"
-                >Login</a
-              >
-            </li>
+            <% if current_user %>
+                <li>
+                    <%= link_to "Logout", destroy_user_session_path, class: "button text-decoration-none button--secondary", data: {turbo_method: :delete } %>
+                </li>
+            <% else %>
+                <li>
+                    <%= link_to "Login", new_user_session_path,  class: "button text-decoration-none button--primary"%>
+                </li>
+            <% end %>
           </ul>
 
         </nav>
