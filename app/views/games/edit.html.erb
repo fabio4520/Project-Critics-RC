@@ -1,10 +1,15 @@
-<h1>Editing game</h1>
+<section class = "section-md flex">
+  <div class = "container-md background_white">
+    <h1 class="center margin_block_start">Editing game</h1>
 
-<%= render "form", game: @game %>
+    <%= render "form", game: @game %>
 
-<br>
+    <br>
 
-<div>
-  <%= link_to "Show this game", @game %> |
-  <%= link_to "Back to games", games_path %>
-</div>
+    <div>
+      <%= link_to "Show this game", @game, class: "text-decoration-none" %> |
+      <%= link_to "Back to games", games_path, class: "text-decoration-none" %>
+    </div>
+  </div>
+</section>
+
