@@ -3,10 +3,12 @@
     <% company.games.map do |game| %>
         <div class="company-games__card">
             <div class="company-games__card--image"> <!--Image-->
-                <% if game.cover.attached? %>
-                    <%= image_tag game.cover%>
-                <% else %>
-                    <%= image_tag "games/default_game_image.jpg"%>
+                <%= link_to game_path(game) do%>
+                    <% if game.cover.attached? %>
+                        <%= image_tag game.cover%>
+                    <% else %>
+                        <%= image_tag "games/default_game_image.jpg"%>
+                    <% end %>
                 <% end %>
             </div>
             <div class="company-games__card--decription"> <!-- Description -->

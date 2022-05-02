@@ -22,11 +22,9 @@
           <!-- <% end %> -->
             
           <ul class="expandable navbar--links list-style-none">
-            <% if current_user.admin? %>
-                <li>
-                  <a href="#" class="link text-sm">Message</a>
-                </li>
-            <% end %>
+            <li>
+              <a href="#" class="link text-sm">Message</a>
+            </li>
             <li>
               <%= link_to "Edit profile", edit_user_registration_path(current_user), class: "link text-sm"%>
             </li>
